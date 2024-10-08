@@ -234,7 +234,7 @@ Example with rspack:
 
 ```js
 plugins: [
-  new HtmlWebpackPlugin(),
+  new rspack.HtmlRspackPlugin(),
   new PreloadWebpackPlugin({
     getHooks: (compilation) => rspack.HtmlRspackPlugin.getCompilationHooks(compilation),
   })
