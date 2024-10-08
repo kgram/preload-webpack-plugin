@@ -225,6 +225,22 @@ For the async chunks mentioned earlier, the plugin would update your HTML to the
 <link rel="prefetch" href="chunk.d15e7fdfc91b34bb78c4.js">
 ```
 
+Usage with other bundlers with compatible HTML plugins
+---------------------
+
+If you are running a different bundler, such as [rspack](https://rspack.dev/), with a compatible API to webpack/html-webpack-plugin, you can use the `getHooks`-option to link the two together.
+
+Example with rspack:
+
+```js
+plugins: [
+  new HtmlWebpackPlugin(),
+  new PreloadWebpackPlugin({
+    getHooks: (compilation) => rspack.HtmlRspackPlugin.getCompilationHooks(compilation),
+  })
+]
+```
+
 Demo
 ----------------------
 

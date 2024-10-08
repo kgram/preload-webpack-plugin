@@ -97,10 +97,14 @@ function extractChunks ({ compilation, optionsInclude }) {
   }
 
   if (includeType === 'allAssets') {
+    // rspack does not yet support assetsInfo, handle this
+    const assetsInfoValues = compilation.assetsInfo
+      ? [...compilation.assetsInfo.values()]
+      : []
     // Every asset, regardless of which chunk it's in.
     // Wrap it in a single, "psuedo-chunk" return value.
     // Note: webpack5 will extract license default, we do not need to preload them
-    const licenseAssets = [...compilation.assetsInfo.values()]
+    const licenseAssets = assetsInfoValues
       .map((info) => {
         if (info.related && info.related.license) {
           return info.related.license

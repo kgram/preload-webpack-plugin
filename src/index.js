@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const defaultOptions = require('./lib/default-options')
 const determineAsValue = require('./lib/determine-as-value')
 const doesChunkBelongToHTML = require('./lib/does-chunk-belong-to-html')
@@ -102,7 +101,8 @@ class PreloadPlugin {
 
       links.push({
         tagName: 'link',
-        attributes
+        attributes,
+        voidTag: true
       })
     }
 
@@ -117,7 +117,7 @@ class PreloadPlugin {
     }
 
     const skip = data => {
-      const htmlFilename = data.plugin.options.filename
+      const htmlFilename = data.outputName
       const exclude = this.options.excludeHtmlNames
       const include = this.options.includeHtmlNames
       return (
@@ -129,7 +129,7 @@ class PreloadPlugin {
     compiler.hooks.compilation.tap(
       this.constructor.name,
       compilation => {
-        HtmlWebpackPlugin.getHooks(compilation).beforeAssetTagGeneration.tapAsync(
+        this.options.getHooks(compilation).beforeAssetTagGeneration.tapAsync(
           this.constructor.name,
           (htmlPluginData, callback) => {
             if (skip(htmlPluginData)) {
@@ -141,7 +141,7 @@ class PreloadPlugin {
           }
         )
 
-        HtmlWebpackPlugin.getHooks(compilation).alterAssetTags.tap(
+        this.options.getHooks(compilation).alterAssetTags.tap(
           this.constructor.name,
           (htmlPluginData) => {
             if (skip(htmlPluginData)) {

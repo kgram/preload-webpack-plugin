@@ -14,12 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+let HtmlWebpackPlugin
+try {
+  // eslint-disable-next-line global-require
+  HtmlWebpackPlugin = require('html-webpack-plugin')
+} catch (error) {
+  // Ignore error, assume this is because a different HtmlPlugin, such as rspack's builtin, will be used
+}
 
 const defaultOptions = {
   rel: 'preload',
   include: 'asyncChunks',
   excludeHtmlNames: [],
-  fileBlacklist: [/\.map/]
+  fileBlacklist: [/\.map/],
+  getHooks: (compilation) => HtmlWebpackPlugin.getHooks(compilation)
 }
 
 module.exports = defaultOptions
