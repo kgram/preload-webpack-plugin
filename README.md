@@ -228,7 +228,7 @@ For the async chunks mentioned earlier, the plugin would update your HTML to the
 Usage with other bundlers with compatible HTML plugins
 ---------------------
 
-If you are running a different bundler, such as [rspack](https://rspack.dev/), with a compatible API to webpack/html-webpack-plugin, you can use the `getHooks`-option to link the two together.
+If you are running a different bundler, such as [rspack](https://rspack.dev/), with a compatible API to webpack/html-webpack-plugin, you can pass the compatible plugin as `HtmlPlugin`.
 
 Example with rspack:
 
@@ -236,7 +236,7 @@ Example with rspack:
 plugins: [
   new rspack.HtmlRspackPlugin(),
   new PreloadWebpackPlugin({
-    getHooks: (compilation) => rspack.HtmlRspackPlugin.getCompilationHooks(compilation),
+    HtmlPlugin: rspack.HtmlRspackPlugin,
   })
 ]
 ```

@@ -27,7 +27,7 @@ const defaultOptions = {
   include: 'asyncChunks',
   excludeHtmlNames: [],
   fileBlacklist: [/\.map/],
-  getHooks: (compilation) => HtmlWebpackPlugin.getHooks(compilation)
+  HtmlPlugin: HtmlWebpackPlugin
 }
 
 module.exports = defaultOptions

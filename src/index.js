@@ -126,10 +126,17 @@ class PreloadPlugin {
       )
     }
 
+    // getHooks is deprecated in html-webpack-plugin and non-existent in rspack, so prefer new API
+    const getHtmlHooks = compilation => (
+      this.options.HtmlPlugin.getCompilationHooks
+        ? this.options.HtmlPlugin.getCompilationHooks(compilation)
+        : this.options.HtmlPlugin.getHooks(compilation)
+    )
+
     compiler.hooks.compilation.tap(
       this.constructor.name,
       compilation => {
-        this.options.getHooks(compilation).beforeAssetTagGeneration.tapAsync(
+        getHtmlHooks(compilation).beforeAssetTagGeneration.tapAsync(
           this.constructor.name,
           (htmlPluginData, callback) => {
             if (skip(htmlPluginData)) {
@@ -141,7 +148,7 @@ class PreloadPlugin {
           }
         )
 
-        this.options.getHooks(compilation).alterAssetTags.tap(
+        getHtmlHooks(compilation).alterAssetTags.tap(
           this.constructor.name,
           (htmlPluginData) => {
             if (skip(htmlPluginData)) {
