@@ -21,6 +21,20 @@ const { JSDOM } = require('jsdom')
 
 const OUTPUT_DIR = path.join(__dirname, 'dist')
 
+function joinCompilationErrors (compilation) {
+  return compilation.errors
+    .map((error) => {
+      if (typeof error === 'string') {
+        return error
+      } else if (error.message) {
+        return error.message
+      } else {
+        return 'Unknown error: ' + error
+      }
+    })
+    .join('\n=========\n')
+}
+
 module.exports = ({
   descriptionPrefix,
   webpack,
@@ -53,7 +67,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -94,7 +108,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -133,7 +147,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -175,7 +189,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -220,7 +234,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -264,7 +278,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -309,7 +323,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -354,7 +368,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -396,7 +410,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -442,7 +456,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -487,7 +501,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -534,7 +548,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -585,7 +599,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -629,7 +643,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -674,7 +688,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'ignored.html'), 'utf-8')
         const dom = new JSDOM(html)
@@ -715,7 +729,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const ignoredHtml = fs.readFileSync(path.join(OUTPUT_DIR, 'ignored.html'), 'utf-8')
         const ignoredDom = new JSDOM(ignoredHtml)
@@ -764,7 +778,7 @@ module.exports = ({
       compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
-          result.compilation.errors.join('\n=========\n'))
+          joinCompilationErrors(result.compilation))
 
         const html = fs.readFileSync(path.join(OUTPUT_DIR, 'index.html'), 'utf-8')
         const dom = new JSDOM(html)
