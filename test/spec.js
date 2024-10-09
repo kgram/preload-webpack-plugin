@@ -46,7 +46,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -62,8 +66,6 @@ module.exports = ({
 
         done()
       })
-
-      compiler.outputFileSystem = fs
     })
 
     it('should add prefetch tags', function (done) {
@@ -85,7 +87,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -100,7 +106,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it('should respect publicPath', function (done) {
@@ -121,7 +126,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -136,7 +145,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
   })
 
@@ -160,7 +168,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -179,7 +191,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it('should set as="style" for CSS, and as="script" otherwise', function (done) {
@@ -202,7 +213,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -221,7 +236,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it('should use the value for the as attribute passed in the configuration', (done) => {
@@ -243,7 +257,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -262,7 +280,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it('should set as="font" and crossOrigin for .woff2 assets', (done) => {
@@ -285,7 +302,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -305,7 +326,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it('should allow setting the as value via a callback', function (done) {
@@ -327,7 +347,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -346,7 +370,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
   })
 
@@ -366,7 +389,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -385,7 +412,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
   })
 
@@ -409,7 +435,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -425,7 +455,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it('should filter based on chunkname, including the sourcemap', function (done) {
@@ -451,7 +480,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -470,7 +503,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     // TODO: Is this testing the right thing? We might need a test around, e.g.,
@@ -495,7 +527,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -518,7 +554,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it(`should honor fileWhitelist and fileBlacklist, with the blacklist taking precedence`, function (done) {
@@ -543,7 +578,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -560,7 +599,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
   })
 
@@ -584,7 +622,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -600,7 +642,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
   })
 
@@ -626,7 +667,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -639,7 +684,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
 
     it(`should not modify the HTML of an asset that's listed, but modify the HTML of the asset that isn't listed`, function (done) {
@@ -664,7 +708,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -686,7 +734,6 @@ module.exports = ({
 
         done()
       })
-      compiler.outputFileSystem = fs
     })
   })
 
@@ -710,7 +757,11 @@ module.exports = ({
             HtmlPlugin: HtmlWebpackPlugin
           })
         ]
-      }, function (err, result) {
+      })
+
+      compiler.outputFileSystem = fs
+
+      compiler.run(function (err, result) {
         expect(err).toBeFalsy(err)
         expect(result.compilation.errors.length).toBe(0,
           result.compilation.errors.join('\n=========\n'))
@@ -723,8 +774,6 @@ module.exports = ({
 
         done()
       })
-
-      compiler.outputFileSystem = fs
     })
   })
 }
