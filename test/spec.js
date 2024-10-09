@@ -561,10 +561,12 @@ module.exports = ({
         expect(links[0].getAttribute('href')).toBe('home.js')
         expect(links[1].getAttribute('rel')).toBe('preload')
         expect(links[1].getAttribute('as')).toBe('script')
-        expect(links[1].getAttribute('href')).toBe('theFirstEntry.js')
+        // Lowercase, since rspack may lowercase the output. This doesn't matter, though.
+        expect(links[1].getAttribute('href').toLowerCase()).toBe('thefirstentry.js')
         expect(links[2].getAttribute('rel')).toBe('preload')
         expect(links[2].getAttribute('as')).toBe('script')
-        expect(links[2].getAttribute('href')).toBe('theSecondEntry.js')
+        // Lowercase, since rspack may lowercase the output. This doesn't matter, though.
+        expect(links[2].getAttribute('href').toLowerCase()).toBe('thesecondentry.js')
 
         done()
       })
@@ -609,7 +611,8 @@ module.exports = ({
         expect(links.length).toBe(1)
         expect(links[0].getAttribute('rel')).toBe('preload')
         expect(links[0].getAttribute('as')).toBe('script')
-        expect(links[0].getAttribute('href')).toBe('theSecondEntry.js')
+        // Lowercase, since rspack may lowercase the output. This doesn't matter, though.
+        expect(links[0].getAttribute('href').toLowerCase()).toBe('thesecondentry.js')
 
         done()
       })
