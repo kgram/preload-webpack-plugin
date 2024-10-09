@@ -42,7 +42,9 @@ module.exports = ({
         },
         plugins: [
           new HtmlWebpackPlugin(),
-          new PreloadPlugin()
+          new PreloadPlugin({
+            HtmlPlugin: HtmlWebpackPlugin
+          })
         ]
       }, function (err, result) {
         expect(err).toBeFalsy(err)
@@ -79,7 +81,8 @@ module.exports = ({
         plugins: [
           new HtmlWebpackPlugin(),
           new PreloadPlugin({
-            rel: 'prefetch'
+            rel: 'prefetch',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -114,7 +117,9 @@ module.exports = ({
         },
         plugins: [
           new HtmlWebpackPlugin(),
-          new PreloadPlugin()
+          new PreloadPlugin({
+            HtmlPlugin: HtmlWebpackPlugin
+          })
         ]
       }, function (err, result) {
         expect(err).toBeFalsy(err)
@@ -151,7 +156,8 @@ module.exports = ({
           new PreloadPlugin({
             rel: 'preload',
             as: 'script',
-            include: 'allChunks'
+            include: 'allChunks',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -192,7 +198,8 @@ module.exports = ({
           new HtmlWebpackPlugin(),
           new PreloadPlugin({
             rel: 'preload',
-            include: 'allChunks'
+            include: 'allChunks',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -232,7 +239,8 @@ module.exports = ({
           new PreloadPlugin({
             rel: 'preload',
             as: 'testing',
-            include: 'allChunks'
+            include: 'allChunks',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -273,7 +281,8 @@ module.exports = ({
           new HtmlWebpackPlugin(),
           new PreloadPlugin({
             rel: 'preload',
-            include: 'allChunks'
+            include: 'allChunks',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -314,7 +323,8 @@ module.exports = ({
           new PreloadPlugin({
             rel: 'preload',
             as: (href) => href.startsWith('/chunk') ? 'test2' : 'test1',
-            include: 'allChunks'
+            include: 'allChunks',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -352,7 +362,8 @@ module.exports = ({
           new HtmlWebpackPlugin(),
           new PreloadPlugin({
             rel: 'prefetch',
-            include: 'allChunks'
+            include: 'allChunks',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -394,7 +405,8 @@ module.exports = ({
           new PreloadPlugin({
             rel: 'preload',
             as: 'script',
-            include: ['home']
+            include: ['home'],
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -435,7 +447,8 @@ module.exports = ({
             include: ['home'],
             // Disable the default file blacklist.
             // This will cause the .map file to be included.
-            fileBlacklist: []
+            fileBlacklist: [],
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -478,7 +491,8 @@ module.exports = ({
         plugins: [
           new HtmlWebpackPlugin(),
           new PreloadPlugin({
-            include: 'allAssets'
+            include: 'allAssets',
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -525,7 +539,8 @@ module.exports = ({
           new PreloadPlugin({
             include: 'allAssets',
             fileWhitelist: [/Entry/],
-            fileBlacklist: [/First/]
+            fileBlacklist: [/First/],
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -565,7 +580,9 @@ module.exports = ({
         devtool: 'cheap-source-map',
         plugins: [
           new HtmlWebpackPlugin(),
-          new PreloadPlugin()
+          new PreloadPlugin({
+            HtmlPlugin: HtmlWebpackPlugin
+          })
         ]
       }, function (err, result) {
         expect(err).toBeFalsy(err)
@@ -605,7 +622,8 @@ module.exports = ({
             filename: 'ignored.html'
           }),
           new PreloadPlugin({
-            excludeHtmlNames: ['ignored.html']
+            excludeHtmlNames: ['ignored.html'],
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -642,7 +660,8 @@ module.exports = ({
           }),
           new HtmlWebpackPlugin(),
           new PreloadPlugin({
-            excludeHtmlNames: ['ignored.html']
+            excludeHtmlNames: ['ignored.html'],
+            HtmlPlugin: HtmlWebpackPlugin
           })
         ]
       }, function (err, result) {
@@ -687,7 +706,9 @@ module.exports = ({
           new HtmlWebpackPlugin({
             chunks: ['theSecondEntry']
           }),
-          new PreloadPlugin()
+          new PreloadPlugin({
+            HtmlPlugin: HtmlWebpackPlugin
+          })
         ]
       }, function (err, result) {
         expect(err).toBeFalsy(err)
