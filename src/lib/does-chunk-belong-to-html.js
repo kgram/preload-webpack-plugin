@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const EntryPoint = require('webpack/lib/Entrypoint')
 
 module.exports = function doesChunkBelongToHtml ({
   chunk,
@@ -47,10 +46,12 @@ function recursiveChunkEntryName (chunk) {
 }
 
 function _recursiveChunkGroup (chunkGroup) {
-  if (chunkGroup instanceof EntryPoint) {
-    return chunkGroup.name
-  } else {
+  if (chunkGroup && chunkGroup.getParents) {
     const [chunkParent] = chunkGroup.getParents()
     return _recursiveChunkGroup(chunkParent)
+  } else if (chunkGroup && chunkGroup.name) {
+    return chunkGroup.name
+  } else {
+    return undefined
   }
 }
