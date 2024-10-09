@@ -475,7 +475,7 @@ module.exports = ({
       const fs = new MemoryFileSystem()
       const compiler = webpack({
         entry: path.join(__dirname, 'fixtures', 'file.js'),
-        devtool: 'cheap-source-map',
+        devtool: 'source-map',
         output: {
           path: OUTPUT_DIR,
           filename: 'bundle.js',
